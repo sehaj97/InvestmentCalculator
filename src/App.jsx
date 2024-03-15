@@ -11,21 +11,21 @@ function App() {
           <div className="input-group">
             <div>
               <label for="initialInvestment">Initial Investment</label>
-              <input type="number" id="initialInvestment" name="fav_language" value="0" />
+              <input type="number" id="initialInvestment" name="in" value="0" />
             </div>
             <div>
               <label for="initialInvestment2">Initial Investment</label>
-              <input type="number" id="initialInvestment2" name="fav_language" value="0" />
+              <input type="number" id="initialInvestment2" name="in2" value="0" />
             </div>
           </div>
           <div className="input-group">
             <div>
               <label for="initialInvestment3">Initial Investment</label>
-              <input type="number" id="initialInvestment3" name="fav_language" value="0" />
+              <input type="number" id="initialInvestment3" name="in3" value="0" />
             </div>
             <div>
               <label for="initialInvestment4">Initial Investment</label>
-              <input type="number" id="initialInvestment4" name="fav_language" value="0" />
+              <input type="number" id="initialInvestment4" name="in4" value="0" />
             </div>
           </div>
         </div>
