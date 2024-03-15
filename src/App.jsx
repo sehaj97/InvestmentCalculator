@@ -1,5 +1,11 @@
 import logo from "./assets/investment-calculator-logo.png"
 function App() {
+  const [formdata, setFormdata] = useState({
+    initialInvestment: "",
+    annualInvestment: "",
+    expectedReturn: "",
+    duration: "",
+  })
   return (
     <>
       <header id="header" >
@@ -8,26 +14,26 @@ function App() {
       </header>
       <main>
         <div id="user-input">
-          <div className="input-group">
+          <form className="input-group">
             <div>
               <label for="initialInvestment">Initial Investment</label>
-              <input type="number" id="initialInvestment" name="in" value="0" />
+              <input type="number" id="initialInvestment" name="initialInvestment" value={formdata.initialInvestment} />
             </div>
             <div>
-              <label for="initialInvestment2">Initial Investment</label>
-              <input type="number" id="initialInvestment2" name="in2" value="0" />
+              <label for="annualInvestment">annualInvestment</label>
+              <input type="number" id="annualInvestment" name="annualInvestment" value={formdata.annualInvestment} />
             </div>
-          </div>
-          <div className="input-group">
-            <div>
-              <label for="initialInvestment3">Initial Investment</label>
-              <input type="number" id="initialInvestment3" name="in3" value="0" />
+            <div className="input-group">
+              <div>
+                <label for="expectedReturn">expectedReturn</label>
+                <input type="number" id="expectedReturn" name="expectedReturn" value={formdata.expectedReturn} />
+              </div>
+              <div>
+                <label for="duration">duration</label>
+                <input type="number" id="duration" name="duration" value={formdata.duration} />
+              </div>
             </div>
-            <div>
-              <label for="initialInvestment4">Initial Investment</label>
-              <input type="number" id="initialInvestment4" name="in4" value="0" />
-            </div>
-          </div>
+          </form>
         </div>
       </main>
     </>
