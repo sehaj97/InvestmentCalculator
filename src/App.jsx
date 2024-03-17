@@ -10,6 +10,7 @@ function App() {
     expectedReturn: 6,
     duration: 10,
   })
+  const inputIsValid = formdata.duration >= 1
   const [data, setData] = useState([])
   function handleChange(e) {
     setFormdata((prevFormdata) => {
@@ -19,7 +20,8 @@ function App() {
       }
       return newFormData;
     })
-    setData([])
+    // setData([])
+    setData(calculateInvestmentResults(formdata))
   }
   function handleSubmit(e) {
     e.preventDefault();
@@ -47,7 +49,10 @@ function App() {
           </form>
         </div>
         {
-          data && <Results inputData={formdata} resultData={data} />
+          (inputIsValid) && <Results inputData={formdata} resultData={data} />
+        }
+        {
+          !inputIsValid && <p className="center">Please Provide Valid Duration Which is Greater than 0</p>
         }
       </main>
     </>
