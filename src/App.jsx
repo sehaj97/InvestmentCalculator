@@ -2,13 +2,15 @@ import { useState } from "react"
 import Header from "./Components/Header";
 import UserInput from "./Components/UserInput";
 import { calculateInvestmentResults } from "./util/investment";
+import Results from "./Components/Results";
 function App() {
   const [formdata, setFormdata] = useState({
-    initialInvestment: 0,
-    annualInvestment: 0,
-    expectedReturn: 0,
-    duration: 0,
+    initialInvestment: 10000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 10,
   })
+  const [data, setData] = useState([])
   function handleChange(e) {
     setFormdata((prevFormdata) => {
       const newFormData = {
@@ -17,13 +19,13 @@ function App() {
       }
       return newFormData;
     })
-    console.log("before submit formdata is", formdata)
+    setData([])
   }
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("after submit formdata is", formdata)
-    calculateInvestmentResults(formdata)
-    console.log(calculateInvestmentResults(formdata))
+    setData(calculateInvestmentResults(formdata))
+    console.log("After submit formdata is", formdata)
+    console.log("After submit formdata is", data)
   }
   return (
     <>
@@ -44,6 +46,9 @@ function App() {
             </div>
           </form>
         </div>
+        {
+          data && <Results inputData={formdata} resultData={data} />
+        }
       </main>
     </>
   )
