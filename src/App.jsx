@@ -1,5 +1,7 @@
 import { useState } from "react"
-import logo from "./assets/investment-calculator-logo.png"
+import Header from "./Components/Header";
+import UserInput from "./Components/UserInput";
+import { calculateInvestmentResults } from "./util/investment";
 function App() {
   const [formdata, setFormdata] = useState({
     initialInvestment: 0,
@@ -20,35 +22,22 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log("after submit formdata is", formdata)
+    calculateInvestmentResults(formdata)
+    console.log(calculateInvestmentResults(formdata))
   }
   return (
     <>
-      <header id="header" >
-        <img src={logo} alt="Investment Calculator logo" />
-        <h1>Investment Calculator</h1>
-      </header>
+      <Header />
       <main>
         <div id="user-input">
           <form onSubmit={handleSubmit}>
             <div className="input-group" >
-              <div>
-                <label htmlFor="initialInvestment">Initial Investment</label>
-                <input type="number" id="initialInvestment" name="initialInvestment" value={formdata.initialInvestment} onChange={handleChange} />
-              </div>
-              <div>
-                <label htmlFor="annualInvestment">annualInvestment</label>
-                <input type="number" id="annualInvestment" name="annualInvestment" value={formdata.annualInvestment} onChange={handleChange} />
-              </div>
+              <UserInput inputTitle={"Initial Investment"} inputName={"initialInvestment"} inputValue={formdata.initialInvestment} handleChange={handleChange} />
+              <UserInput inputTitle={"Annual Investment"} inputName={"annualInvestment"} inputValue={formdata.annualInvestment} handleChange={handleChange} />
             </div>
             <div className="input-group" >
-              <div>
-                <label htmlFor="expectedReturn">expectedReturn</label>
-                <input type="number" id="expectedReturn" name="expectedReturn" value={formdata.expectedReturn} onChange={handleChange} />
-              </div>
-              <div>
-                <label htmlFor="duration">duration</label>
-                <input type="number" id="duration" name="duration" value={formdata.duration} onChange={handleChange} />
-              </div>
+              <UserInput inputTitle={"Expected Return"} inputName={"expectedReturn"} inputValue={formdata.expectedReturn} handleChange={handleChange} />
+              <UserInput inputTitle={"Duration"} inputName={"duration"} inputValue={formdata.duration} handleChange={handleChange} />
             </div>
             <div className="input-group" >
               <button type="submit">Invest</button>
